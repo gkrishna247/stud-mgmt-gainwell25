@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Recognition</title>
+</head>
+<body>
+    <h1>Face Recognition</h1>
+
+    <h2>Upload Image</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Recognize">
+    </form>
+
+    {% if image_filename %}
+        <h2>Result:</h2>
+        <img src="{{ url_for('uploaded_file', filename=image_filename) }}" alt="Processed Image">
+    {% endif %}
+
+      <h2>Webcam</h2>
+
+  <div>
+     <img id="webcam_feed" src="{{ url_for('webcam_feed') }}" width=600 height=400/>
+
+    <!--NOTE: Change width/height to match aspect of input for best resolution of image -->
+  </div>
+
+  <h2><a href = "{{ url_for('manage_known_faces') }}">Manage Known Faces </a> </h2>
+  <!--Linking Manage Known Face Button -->
+
+</body>
+</html>

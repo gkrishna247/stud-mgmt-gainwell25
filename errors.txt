@@ -1,0 +1,6 @@
+Image_path = "known_faces\gk\PHOTO.png":list index out of range
+Image_path = "known_faces\gk\photo2.png":bad allocation
+Image_path = "known_faces\jeff\1.jpg":list index out of range
+Image_path = "known_faces\jeff\2.jpg":list index out of range
+Image_path = "known_faces\musk\1.jpg":list index out of range
+Image_path = "known_faces\musk\2.jpg":list index out of range

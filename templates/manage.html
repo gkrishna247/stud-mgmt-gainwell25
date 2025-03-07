@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Known Faces</title>
+</head>
+<body>
+    <h1>Manage Known Faces</h1>
+        {% if error %}
+        <p style="color:red">Error: {{ error }}</p>
+        <!-- Display message passed from URL parameters -->
+    {% endif %}
+
+    <h2>Add Person</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="person_name">Person Name:</label>
+        <input type="text" id="person_name" name="person_name" required> <br>
+         <!--REQUIRED Attribute ensures text data field is NOT empty -->
+        <label for="file">Upload Image(s):</label>
+        <input type="file" id="file" name="file" accept=".png,.jpg,.jpeg,.gif" multiple required><br><br>
+           <!--accept attribute: This ensures that non valid images are removed BEFORE submitting to app.py for efficiency (errors dealt before expensive app calculations are performed)  -->
+         <!--Multiple, allows a user to upload multiple files at once  -->
+         <!--Required file type. Ensure if user selects nothing, then button is clicked an error prompts as a default for Flask, therefore error handling does not occur for file checking empty filetype if it is checked here   -->
+
+        <input type="submit" name="add_person" value="Add Person">
+           <!--Important to add name, otherwise you can't detect button action -->
+
+    </form>
+
+    <h2>Known People</h2>
+    <ul>
+    {% for person in known_people %}
+        <li>{{ person }}</li>
+    {% endfor %}
+    </ul>
+
+
+    <h2>Clear Database</h2>
+    <form method="POST">
+        <input type="submit" name="clear_database" value="Clear ALL">
+                  <!--Important to add name, otherwise you can't detect button action -->
+    </form>
+
+    <h2><a href = "{{ url_for('index') }}">Home </a> </h2>
+    <!-- Link to get back to home (main directory) -->
+
+</body>
+</html>
